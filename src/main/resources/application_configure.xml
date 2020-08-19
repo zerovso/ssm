@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context" 
+	xmlns:tx="http://www.springframework.org/schema/tx" 
+	xmlns:util="http://www.springframework.org/schema/util" 
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc" 
+	xmlns:cache="http://www.springframework.org/schema/cache" 
+    xsi:schemaLocation="
+    	http://www.springframework.org/schema/beans
+    	http://www.springframework.org/schema/beans/spring-beans.xsd
+    	http://www.springframework.org/schema/aop
+    	http://www.springframework.org/schema/aop/spring-aop.xsd
+    	http://www.springframework.org/schema/context
+    	http://www.springframework.org/schema/context/spring-context.xsd
+	    http://www.springframework.org/schema/tx
+	    http://www.springframework.org/schema/tx/spring-tx.xsd
+	    http://www.springframework.org/schema/util
+	    http://www.springframework.org/schema/util/spring-util.xsd
+	    http://www.springframework.org/schema/jdbc
+	    http://www.springframework.org/schema/jdbc/spring-jdbc.xsd
+	    http://www.springframework.org/schema/cache
+	    http://www.springframework.org/schema/cache/spring-cache.xsd">
+	    
+	<bean id="baseDao" class="com.zerovso.spring.configure.dao.impl.BaseDaoImpl"></bean>
+	
+	<!--  增强类 -->
+	<bean id="serviceAdvice" class="com.zerovso.spring.configure.advice.BaseServiceAdvice"></bean>
+	
+	<!-- 要增强的目标对象 -->
+	<bean id="baseService" class="com.zerovso.spring.configure.service.impl.BaseServiceImpl">
+		<property name="baseDao" ref="baseDao"></property>
+	</bean>
+	
+	<bean id="baseController" class="com.zerovso.spring.configure.controller.BaseController">
+		<property name="baseService" ref="baseService"></property>
+	</bean>
+	
+	<!-- 配置AOP -->
+	<aop:config>
+		<!-- 配置切入点,可以配置多个 -->   
+		<aop:pointcut id="servicePointcut" 
+			expression="execution(public * com.zerovso.spring.configure.service.impl.*.adviceTest(..))"/>
+		<!-- 增强类 -->
+		<aop:aspect ref="serviceAdvice">
+			<!-- 将增强的功能,织入到切面 -->
+			<aop:before method="beforeService" pointcut-ref="servicePointcut"/>
+			<aop:after method="afterService" pointcut-ref="servicePointcut"/>
+			<aop:around method="aroundService" pointcut-ref="servicePointcut"/>
+			<aop:after-returning returning="name" method="returnService"  pointcut-ref="servicePointcut"/>
+			<aop:after-throwing throwing="ex" method="exService"  pointcut-ref="servicePointcut"/>
+		</aop:aspect>
+	</aop:config>
+	
+	
+</beans>

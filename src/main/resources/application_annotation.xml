@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context" 
+	xmlns:tx="http://www.springframework.org/schema/tx" 
+	xmlns:util="http://www.springframework.org/schema/util" 
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc" 
+	xmlns:cache="http://www.springframework.org/schema/cache" 
+    xsi:schemaLocation="
+    	http://www.springframework.org/schema/beans
+    	http://www.springframework.org/schema/beans/spring-beans.xsd
+    	http://www.springframework.org/schema/aop
+    	http://www.springframework.org/schema/aop/spring-aop.xsd
+    	http://www.springframework.org/schema/context
+    	http://www.springframework.org/schema/context/spring-context.xsd
+	    http://www.springframework.org/schema/tx
+	    http://www.springframework.org/schema/tx/spring-tx.xsd
+	    http://www.springframework.org/schema/util
+	    http://www.springframework.org/schema/util/spring-util.xsd
+	    http://www.springframework.org/schema/jdbc
+	    http://www.springframework.org/schema/jdbc/spring-jdbc-3.1.xsd
+	    http://www.springframework.org/schema/cache
+	    http://www.springframework.org/schema/cache/spring-cache-3.1.xsd">
+	    
+	    <!-- 包扫描:将添加了注解的类,添加到容器中 -->
+	    <context:component-scan base-package="com.zerovso"/>
+	    <!-- 完成AOP的自动装载 -->
+	    <aop:aspectj-autoproxy/>
+	    
+</beans>

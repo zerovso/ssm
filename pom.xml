@@ -4,4 +4,61 @@
   <artifactId>smm</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>war</packaging>
+  
+  <!-- spring 三大核心组件 core beans context -->
+  
+  <dependencies>
+  	<!-- https://mvnrepository.com/artifact/org.springframework/spring-core -->
+	<dependency>
+	    <groupId>org.springframework</groupId>
+	    <artifactId>spring-core</artifactId>
+	    <version>4.3.27.RELEASE</version>
+	</dependency>
+	
+	<!-- https://mvnrepository.com/artifact/org.springframework/spring-beans -->
+	<dependency>
+	    <groupId>org.springframework</groupId>
+	    <artifactId>spring-beans</artifactId>
+	    <version>4.3.27.RELEASE</version>
+	</dependency>
+
+  	<!-- https://mvnrepository.com/artifact/org.springframework/spring-context -->
+	<dependency>
+	    <groupId>org.springframework</groupId>
+	    <artifactId>spring-context</artifactId>
+	    <version>4.3.27.RELEASE</version>
+	</dependency>
+  	
+  	<!-- aop切面核心JAR包 -->
+  	<!-- https://mvnrepository.com/artifact/org.springframework/spring-aop -->
+	<dependency>
+	    <groupId>org.springframework</groupId>
+	    <artifactId>spring-aop</artifactId>
+	    <version>4.3.27.RELEASE</version>
+	</dependency>
+  	
+  	<!-- https://mvnrepository.com/artifact/org.springframework/spring-aspects -->
+	<!--
+	<dependency>
+	    <groupId>org.springframework</groupId>
+	    <artifactId>spring-aspects</artifactId>
+	    <version>4.3.27.RELEASE</version>
+	</dependency>
+  	-->
+  	
+  	<!-- https://mvnrepository.com/artifact/aopalliance/aopalliance -->
+	<dependency>
+	    <groupId>aopalliance</groupId>
+	    <artifactId>aopalliance</artifactId>
+	    <version>1.0</version>
+	</dependency>
+  	
+  	<!-- https://mvnrepository.com/artifact/org.aspectj/aspectjweaver -->
+	<dependency>
+	    <groupId>org.aspectj</groupId>
+	    <artifactId>aspectjweaver</artifactId>
+	    <version>1.9.6</version>
+	</dependency>
+  	
+  </dependencies>
 </project>
